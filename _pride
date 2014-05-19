@@ -1,0 +1,29 @@
+#compdef pride
+# ------------------------------------------------------------------------------
+# Description
+# -----------
+#
+#  Completion script for Pride
+#
+# ------------------------------------------------------------------------------
+# Authors
+# -------
+#
+#  * Rishabh Garg (https://github.com/rishabhg)
+# 
+# ------------------------------------------------------------------------------
+
+local curcontext="$curcontext" state line ret=0 first second third arguments
+typeset -A opt_args
+
+arguments=('add:Add modules to a pride' 'config: Set configuration parameters' 'do: Execute a command on a set of the modules'
+  'help: Display help information'
+  'init: Initialize pride'
+  'list: Lists modules in a pride'
+  'remove: Remove modules from a pride'
+  'update: Updates a pride'
+  'vesion: Display pride version'
+  )
+_describe -t commands 'values' arguments
+
+return ret
