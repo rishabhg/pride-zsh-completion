@@ -40,7 +40,7 @@ All you need is to add the `_pride` source to your `fpath` directory and call zs
     $ git clone git@github.com:rishabhg/pride-zsh-completion.git pride
     ```
 
-3. Include `pride` plugin to your .zshrc file along with other plugins:
+3. Include `pride` plugin to your `.zshrc` file along with other plugins:
 
     ```zsh
     ...
