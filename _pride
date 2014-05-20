@@ -1,4 +1,5 @@
 #compdef pride
+#autoload
 # ------------------------------------------------------------------------------
 # Description
 # -----------
@@ -13,17 +14,66 @@
 # 
 # ------------------------------------------------------------------------------
 
-local curcontext="$curcontext" state line ret=0 first second third arguments
+
 typeset -A opt_args
+local curcontext="$curcontext" state line ret=0
 
-arguments=('add:Add modules to a pride' 'config: Set configuration parameters' 'do: Execute a command on a set of the modules'
-  'help: Display help information'
-  'init: Initialize pride'
-  'list: Lists modules in a pride'
-  'remove: Remove modules from a pride'
-  'update: Updates a pride'
-  'vesion: Display pride version'
-  )
-_describe -t commands 'values' arguments
+_arguments -C \
+  '1:cmd:->cmds' \
+  '2:generators:->generator_lists' \
+&& ret=0
 
-return ret
+ local commands; commands=(
+	'add: Add modules to a pride' 
+	'config: Set configuration parameters' 
+	'do: Execute a command on a set of the modules'
+	'help: Display help information'
+	'init: Initialize pride'
+	'list: Lists modules in a pride'
+	'remove: Remove modules from a pride'
+	'update: Updates a pride'
+	'version: Display pride version'
+)
+
+case "$state" in
+  (cmds)
+
+      _describe -t commands 'command' commands && ret=0
+  ;;
+  (generator_lists)
+    case $line[1] in
+      (add)
+        local generators; generators=(
+          '--no-repo-cache: Pride caches repos locally'
+          '-v: verbose output'
+          '-q: kill most output'
+        )
+        _describe -t generators 'generator' generators && ret=0
+      ;;
+      (remove)
+        local generators; generators=(
+          '-v: verbose output'
+          '-q: kill most output'
+        )
+        _describe -t generators 'generator' generators && ret=0
+      ;;
+      (do)
+        local generators; generators=(
+          '--bare: reduce command execution output to minimum'
+        )
+        _describe -t generators 'generator' generators && ret=0
+      ;;
+      (config)
+        local generators; generators=(
+          '--default: do not set a configuration parameter that is already set'
+        )
+        _describe -t generators 'generator' generators && ret=0
+      ;;
+      (help)
+        _describe -t commands 'command' commands && ret=0
+      ;;
+    esac
+  ;;
+esac
+
+return 0
