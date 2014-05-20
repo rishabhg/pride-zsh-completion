@@ -1,34 +1,55 @@
-pride-zsh-completion
-===============
-*Z shell autocomplete plugin for [Pride](https://github.com/prezi/pride)*
+#pride-zsh-completion
 
-Status
-------
+*`pride-zsh-completion` is the zsh completion script for
+[Pride](https://github.com/prezi/pride)*
 
+## Installation
 
-Usage
------
+Put the `_pride` file to the `fpath` directory.
 
-#### oh-my-zsh
+```sh
+$ cp _pride /usr/local/share/zsh/site-functions/
+$ exec zsh
+```
 
-* Create a new folder `pride` in oh-my-zsh custom plugin directory:
+Where the `fpath` directory is ?
 
-        $ mkdir ~/.oh-my-zsh/custom/plugins/pride/
+```sh
+$ echo "$fpath" | tr " " "\n"
+```
 
-* Clone the contents of repo in this directory:
+## Installation for oh-my-zsh
 
-        $ cd ~/.oh-my-zsh/custom/plugins/pride/
-        $ git clone git@github.com:rishabhg/pride-zsh-completion.git .
+1. In the command line, change to `oh-my-zsh` plugins directory:
 
-* Reload your shell:
+    ```console
+    $ cd ~/.oh-my-zsh/custom/plugins
+    ```
 
-        $ exec $SHELL
-        
-Support
--------
+2. Clone the repository into a new directory called `pride`:
+
+    ```console
+    git clone git@github.com:rishabhg/pride-zsh-completion.git pride
+    ```
+
+3. Include `pride` plugin to your .zshrc file along with other plugins:
+
+    ```zsh
+    ...
+    plugins=(git pride)
+    ...
+    ```
+
+4. Reload your shell:
+
+    ```console
+    $ exec zsh
+    ```
+## Usage
+
 Currently all commonly used `pride` commands are supported
 
-```
+```console
 $ pride <tab>
   config  --  Set configuration parameters
   do      --  Execute a command on a set of the modules
@@ -40,5 +61,10 @@ $ pride <tab>
   vesion  --  Display pride version
 ```
 
-License
--------
+
+## Requirements
+
+- [Pride](https://github.com/prezi/pride)
+- [zsh](http://www.zsh.org/)
+- Optional: [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
+
