@@ -3,22 +3,30 @@
 *`pride-zsh-completion` is the zsh completion script for
 [Pride](https://github.com/prezi/pride)*
 
-## Installation
+##Setup
 
-Put the `_pride` file to the `fpath` directory.
+All you need is to add the `_pride` source to your `fpath` directory and call zsh commands for enabling auto-completion. The easy ways to do this are - 
 
-```sh
-$ cp _pride /usr/local/share/zsh/site-functions/
-$ exec zsh
-```
+### Installation
 
-Where the `fpath` directory is ?
+1. Clone the repository:
 
-```sh
-$ echo "$fpath" | tr " " "\n"
-```
+    ```console
+    git clone git@github.com:rishabhg/pride-zsh-completion.git .
+    ```
 
-## Installation for oh-my-zsh
+2. Install from make file:
+
+    ```console
+    $ sudo make install
+    ```
+3. Reload your shell:
+
+    ```console
+    $ exec zsh
+    ```
+    
+### Installation for oh-my-zsh
 
 1. In the command line, change to `oh-my-zsh` plugins directory:
 
@@ -29,7 +37,7 @@ $ echo "$fpath" | tr " " "\n"
 2. Clone the repository into a new directory called `pride`:
 
     ```console
-    git clone git@github.com:rishabhg/pride-zsh-completion.git pride
+    $ git clone git@github.com:rishabhg/pride-zsh-completion.git pride
     ```
 
 3. Include `pride` plugin to your .zshrc file along with other plugins:
@@ -45,6 +53,7 @@ $ echo "$fpath" | tr " " "\n"
     ```console
     $ exec zsh
     ```
+
 ## Usage
 
 Currently all commonly used `pride` commands are supported
@@ -62,9 +71,8 @@ $ pride <tab>
 ```
 
 
-## Requirements
+##Requirements
 
 - [Pride](https://github.com/prezi/pride)
 - [zsh](http://www.zsh.org/)
 - Optional: [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
-
